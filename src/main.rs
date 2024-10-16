@@ -28,6 +28,7 @@ mod tests {
         let mut cmd = Command::cargo_bin("wave-git-cz")?;
         cmd.assert()
             .failure()
+            .stdout("")
             .stderr("error: the following required arguments were not provided:\n  <TEXT>\n\nUsage: wave-git-cz <TEXT>\n\nFor more information, try '--help'.\n");
         Ok(())
     }
@@ -38,8 +39,8 @@ mod tests {
         cmd.arg("commit_body")
             .assert()
             .success()
-            // .stdout(predicate::eq(b"\"commit_body\"" as &[u8]));
-            .stdout(predicate::eq("\"commit_body\""));
+            .stdout(predicate::eq("\"commit_body\""))
+            .stderr(predicate::eq(""));
         Ok(())
     }
 }
