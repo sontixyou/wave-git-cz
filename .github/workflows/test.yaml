@@ -25,5 +25,7 @@ jobs:
           shared-key: "cache"
       - name: Setup mold linker
         uses: rui314/setup-mold@v1
+      - name: Build
+        run: cargo build --workspace --all-features --all-targets
       - name: Run tests
         run: cargo test --workspace --all-features --all-targets --no-fail-fast
