@@ -14,7 +14,7 @@ fn main() {
         )
         .get_matches();
     let text = cli.get_one::<String>("commit_body").unwrap();
-    print!("{:?}", text);
+    println!("{:?}", text);
 }
 
 #[cfg(test)]
@@ -39,7 +39,7 @@ mod tests {
         cmd.arg("commit_body")
             .assert()
             .success()
-            .stdout(predicate::eq("\"commit_body\""))
+            .stdout(predicate::eq("\"commit_body\"\n"))
             .stderr(predicate::eq(""));
         Ok(())
     }
